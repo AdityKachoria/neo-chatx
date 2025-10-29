@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Cosmic Space Theme - Neon Green on Black */
+    --background: 0 0% 0%;
+    --foreground: 123 100% 95%;
+
+    --card: 0 0% 5%;
+    --card-foreground: 123 100% 95%;
+
+    --popover: 0 0% 5%;
+    --popover-foreground: 123 100% 95%;
+
+    --primary: 123 100% 50%;
+    --primary-foreground: 0 0% 0%;
+    --primary-glow: 123 100% 70%;
+
+    --secondary: 270 100% 50%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 120 20% 20%;
+    --muted-foreground: 120 30% 60%;
+
+    --accent: 180 100% 50%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 120 50% 15%;
+    --input: 120 50% 10%;
+    --ring: 123 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom cosmic variables */
+    --neon-green: 123 100% 50%;
+    --neon-purple: 270 100% 60%;
+    --neon-cyan: 180 100% 50%;
+    --space-black: 0 0% 0%;
+    --space-gray: 120 10% 15%;
+    
+    /* Glow effects */
+    --glow-primary: 0 0 20px hsl(123 100% 50% / 0.5), 0 0 40px hsl(123 100% 50% / 0.3);
+    --glow-secondary: 0 0 20px hsl(270 100% 60% / 0.5), 0 0 40px hsl(270 100% 60% / 0.3);
+    --glow-accent: 0 0 20px hsl(180 100% 50% / 0.5), 0 0 40px hsl(180 100% 50% / 0.3);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 0 0% 3%;
+    --sidebar-foreground: 123 100% 90%;
+    --sidebar-primary: 123 100% 50%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 120 30% 12%;
+    --sidebar-accent-foreground: 123 100% 90%;
+    --sidebar-border: 120 50% 15%;
+    --sidebar-ring: 123 100% 50%;
+  }
+
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 123 100% 95%;
+    --card: 0 0% 5%;
+    --card-foreground: 123 100% 95%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 123 100% 95%;
+    --primary: 123 100% 50%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 270 100% 50%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 120 20% 20%;
+    --muted-foreground: 120 30% 60%;
+    --accent: 180 100% 50%;
+    --accent-foreground: 0 0% 0%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 120 50% 15%;
+    --input: 120 50% 10%;
+    --ring: 123 100% 50%;
+    --sidebar-background: 0 0% 3%;
+    --sidebar-foreground: 123 100% 90%;
+    --sidebar-primary: 123 100% 50%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 120 30% 12%;
+    --sidebar-accent-foreground: 123 100% 90%;
+    --sidebar-border: 120 50% 15%;
+    --sidebar-ring: 123 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  /* Cosmic glow effects */
+  .glow-primary {
+    box-shadow: var(--glow-primary);
+  }
+
+  .glow-secondary {
+    box-shadow: var(--glow-secondary);
+  }
+
+  .glow-accent {
+    box-shadow: var(--glow-accent);
+  }
+
+  /* Text glow effects */
+  .text-glow-primary {
+    text-shadow: 0 0 10px hsl(var(--primary) / 0.7), 0 0 20px hsl(var(--primary) / 0.5);
+  }
+
+  .text-glow-secondary {
+    text-shadow: 0 0 10px hsl(var(--secondary) / 0.7), 0 0 20px hsl(var(--secondary) / 0.5);
+  }
+
+  /* Cosmic animations */
+  @keyframes pulse-glow {
+    0%, 100% {
+      opacity: 1;
+      box-shadow: var(--glow-primary);
+    }
+    50% {
+      opacity: 0.8;
+      box-shadow: 0 0 30px hsl(123 100% 50% / 0.6), 0 0 60px hsl(123 100% 50% / 0.4);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* Cosmic gradient backgrounds */
+  .cosmic-gradient {
+    background: linear-gradient(135deg, hsl(var(--space-black)) 0%, hsl(var(--space-gray)) 50%, hsl(var(--space-black)) 100%);
+  }
+
+  .cosmic-border {
+    border: 1px solid hsl(var(--primary) / 0.3);
+    background: linear-gradient(135deg, hsl(var(--space-black)) 0%, hsl(0 0% 5%) 100%);
+  }
+}
